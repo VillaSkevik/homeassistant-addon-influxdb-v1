@@ -1,14 +1,18 @@
 name: InfluxDB v1
-version: 1.0.0
+version: 1.1.0
 slug: influxdb-v1
-description: InfluxDB 1.8.10 for Home Assistant and BESS Manager
+description: InfluxDB 1.8.10 with Chronograf web interface for Home Assistant and BESS Manager
 url: https://github.com/VillaSkevik/homeassistant-addon-influxdb-v1
 arch:
   - aarch64
-  - armv7
 startup: services
 boot: auto
 init: false
+ingress: true
+ingress_port: 8888
+ingress_stream: true
+panel_icon: mdi:chart-areaspline
+panel_title: InfluxDB v1
 ports:
   8086/tcp: 8086
 ports_description:
@@ -16,7 +20,7 @@ ports_description:
 map:
   - type: data
     read_only: false
-    path: /var/lib/influxdb
+    path: /data
 options:
   reporting_disabled: true
   http_auth_enabled: false
